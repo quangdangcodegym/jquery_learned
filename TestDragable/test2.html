@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Connect lists</title>
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <style>
+  #sortable1, #sortable2, #sortable3, #sortable4 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li, #sortable2 li, #sortable3 li, #sortable4 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+  }
+  </style>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+      let arr1 = ['item1', 'item2', 'item3', 'item4', 'item5'];
+      let arr2 = ['item6', 'item7', 'item8', 'item9', 'item10'];
+      let arr3 = ['item11', 'item12', 'item13', 'item14', 'item15'];
+      let arr4 = ['item16', 'item17', 'item18', 'item19', 'item20'];
+  $( function() {
+    $( "#sortable1, #sortable2, #sortable3, #sortable4" ).sortable({
+      connectWith: ".connectedSortable",
+    //   change: function( event, ui ) {
+    //       console.log(event);
+    //       console.log(ui.sender);
+    //   }
+    stop( event, ui ){
+        let idContainerFrom = event.target.id; //ok
+        let idContainerTo = event.originalEvent.target.parentElement.id;
+
+        let idItem = event.originalEvent.target.id;
+
+        
+        console.log("idContainerFrom: " + idContainerFrom);
+        console.log("idContainerTo: " + idContainerTo);
+        console.log("idItem: " + idItem);
+
+
+
+        //let item = arr1.splice(idContainerFrom-1,1);
+
+        
+        //arr3.push(item);
+        //console.log(event.originalEvent.target.parentElement);
+
+        let indexOfToItem = findIndexInElementItems(event.originalEvent.target.parentElement, "3");
+
+        console.log(indexOfToItem);
+        console.log(event);
+        // console.log(event.originalEvent.target.parentElement.id)
+
+    }
+    }).disableSelection();
+  } );
+  // sender:
+  // 
+  function findIndexInElementItems(elementItems, id){
+      let items = elementItems.children;
+      for(let i=0;i<items.length;i++){
+          if(items[i].id==id){
+              return i;
+          }
+      }
+  }
+  </script>
+</head>
+<body>
+ 
+<ul id="sortable1" class="connectedSortable">
+  <li class="ui-state-default" id="1">Item 1</li>
+  <li class="ui-state-default" id="2">Item 2</li>
+  <li class="ui-state-default" id="3">Item 3</li>
+  <li class="ui-state-default" id="4">Item 4</li>
+  <li class="ui-state-default" id="5">Item 5</li>
+</ul>
+ 
+<ul id="sortable2" class="connectedSortable">
+  <li class="ui-state-highlight" id="6">Item 6</li>
+  <li class="ui-state-highlight" id="7">Item 7</li>
+  <li class="ui-state-highlight" id="8">Item 8</li>
+  <li class="ui-state-highlight" id="9">Item 9</li>
+  <li class="ui-state-highlight" id="10">Item 10</li>
+</ul>
+<ul id="sortable3" class="connectedSortable">
+    <li class="ui-state-highlight2" id="11">Item 11</li>
+    <li class="ui-state-highlight2" id="12">Item 12</li>
+    <li class="ui-state-highlight2" id="13">Item 13</li>
+    <li class="ui-state-highlight2" id="14">Item 14</li>
+    <li class="ui-state-highlight2" id="15">Item 15</li>
+  </ul>
+  <ul id="sortable4" class="connectedSortable">
+    <li class="ui-state-highlight3">Item 16</li>
+    <li class="ui-state-highlight3">Item 17</li>
+    <li class="ui-state-highlight3">Item 18</li>
+    <li class="ui-state-highlight3">Item 19</li>
+    <li class="ui-state-highlight3">Item 20</li>
+  </ul>
+ 
+</body>
+</html>

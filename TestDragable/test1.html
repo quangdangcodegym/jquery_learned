@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			fadeIn() Method in jQuery
+		</title>
+		
+		<style>
+			#Outer {
+				border: 1px solid black;
+				padding-top: 40px;
+				height: 140px;
+				background: green;
+				display: none;
+			}
+            #btnContainer{
+                width: 100px; 
+                /* height: 400px;  */
+                padding: 0.5em; 
+                margin: 10px 10px 10px 0; 
+            }
+		</style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	</head>
+	
+	<body style = "text-align:center;">
+		
+		<div id= "Outer">
+			<h1 style = "color:white;" >
+				GeeksForGeeks
+			</h1>
+		</div><br>
+        <div id="btnContainer">
+            <button id = "btn" type="button">
+                Fade In
+            </button>
+        </div>
+		<!-- jQuery script of fadeIn() method -->
+		<script>
+			$(document).ready(function(){
+				$("#Outer").fadeIn(1000);
+			});
+			
+			// $(document).ready(function() {
+			// 	$("#btn").click(function(event) {
+            //         //event.preventDefault();
+					
+			// 	});
+            //     $("#btn").draggable({
+            //         axis: "y",
+            //         cancel: false,
+            //     });
+            //     $( "#btnContainer" ).droppable({
+            //         // accept: "#btn",
+            //         drop: function( event, ui ) {
+            //             console.log(event);
+            //             $("#Outer").fadeIn(1000);
+
+            //         }
+            //     });
+			// });
+            
+		</script>
+    
+	</body>
+</html>
